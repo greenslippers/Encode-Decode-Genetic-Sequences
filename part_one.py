@@ -10,10 +10,10 @@ def driver():
         "CCCAAAAAGGGGCCCCCGGGGAAAACCCCGGGGGAAACCCGGGGAAAACCCCC"
     ]
 
-    categorized_sequences = {}
-    categorized_sequences["undetermined"] = [] # strands that can't be determined
-    categorized_sequences["dna"] = [] # dna strands
-    categorized_sequences["rna"] = [] # rna strands
+    categorized_sequences = {} # changed key names to "-1", "0", "1" to ensure they match values returned by function categorize_strand
+    categorized_sequences["-1"] = [] # strands that can't be determined 
+    categorized_sequences["0"] = [] # dna strands
+    categorized_sequences["1"] = [] # rna strands
 
     for sequence in all_sequences:
         category = categorize_strand(sequence)
@@ -33,7 +33,7 @@ def driver():
     print("Listing undetermined sequences for review...")
     print("-------------------------")
 
-    for sequence in categorized_sequences[-1]:
+    for sequence in categorized_sequences["-1"]: # changed -1 to string "-1"
         print(sequence)
 
 # Returns 0 for DNA (Contains "T" bases)
@@ -55,9 +55,9 @@ def categorize_strand(strand):
     has_both_bases = (is_t_present and is_u_present)
     has_neither_base = (not is_t_present and not is_u_present)
     if (has_both_bases or has_neither_base):
-        return -1
+        return "-1" 
 
-    return 0 if is_t_present else 1
+    return "0" if is_t_present else "1"
 
 def encode_strand(strand):
     if not strand:
@@ -70,7 +70,7 @@ def encode_strand(strand):
         if strand[index - 1] == strand[index]:
             count += 1
         else:
-            new_entry = strand[index - 1] + count
+            new_entry = strand[index - 1] + str(count) # converted integer count into string
             encoding.append(new_entry)
             count = 1
 
