@@ -22,6 +22,8 @@ def part_one_tests():
 
 def dna_tests():
     result = encode_strand(DNA)
+    print(f"Encoded result: {result}")  # Print the result before the assertion
+
     assert result == DNA_ENCODED
 
     result = decode_strand(DNA_ENCODED)
