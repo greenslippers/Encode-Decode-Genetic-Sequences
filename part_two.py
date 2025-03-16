@@ -48,17 +48,18 @@ def categorize_strand(strand):
     is_t_present = False
     is_u_present = False
 
-    for index in range(0, len(strand) - 1, 4):
+    for index in range(0, len(strand) - 1, 2): # updated the step argument of the range 
+                                                #function in the loop from 4 to 2 to avoid skipping bases
         base = strand[index]
         if base == "T":
             is_t_present = True
 
-        if base == "U":
+        elif base == "U": # changed if to elif
             is_u_present = True
 
     has_both_bases = is_t_present and is_u_present
-    has_neither_base = (not is_t_present) and (not is_u_present)
-    if (has_both_bases or has_neither_base):
-        return -1
+    has_neither_base = not is_t_present and not is_u_present
+    if has_both_bases or has_neither_base:
+        return -1 
 
-    return 0 if is_t_present else 1
+    return 0 if is_t_present else 1 

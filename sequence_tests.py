@@ -12,7 +12,7 @@ ENCODED_NEITHER_BASE = "C3A5G4C5G4A4C4G5A3C3G4A4C5"
 
 def tests():
     part_one_tests()
-    # part_two_tests()
+    part_two_tests()
     print("All tests passed!\n")
 
 def part_one_tests():
@@ -30,6 +30,8 @@ def dna_tests():
     assert result == DNA
 
     result = categorize_strand(DNA)
+    # Add print statement to check reluts and the class of output
+    print(f"Categorized strand in test: {result}, type: {type(result)}") 
     assert result == 0
 
 def rna_tests():

@@ -55,9 +55,9 @@ def categorize_strand(strand):
     has_both_bases = (is_t_present and is_u_present)
     has_neither_base = (not is_t_present and not is_u_present)
     if (has_both_bases or has_neither_base):
-        return "-1" 
+        return -1 # changed "-1" string to integer
 
-    return "0" if is_t_present else "1"
+    return 0 if is_t_present else 1 # changed "0" and "1" from strings to integers
 
 def encode_strand(strand):
     if not strand:
